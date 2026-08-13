@@ -105,7 +105,6 @@
     pointer-events: none;
   }
 
-  /* grid overlay */
   .hero::after {
     content: '';
     position: absolute;
@@ -448,10 +447,7 @@
     align-items: start;
   }
 
-  .story-meta {
-    position: sticky;
-    top: 80px;
-  }
+  .story-meta { position: sticky; top: 80px; }
 
   .story-meta-label {
     font-family: var(--font-mono);
@@ -494,10 +490,7 @@
     margin-bottom: 20px;
   }
 
-  .story-content p strong {
-    color: var(--text);
-    font-weight: 600;
-  }
+  .story-content p strong { color: var(--text); font-weight: 600; }
 
   .story-content blockquote {
     border-left: 3px solid var(--red);
@@ -511,10 +504,7 @@
   }
 
   /* ── WAITLIST ── */
-  .waitlist-section {
-    text-align: center;
-    padding: 100px 10vw;
-  }
+  .waitlist-section { text-align: center; padding: 100px 10vw; }
 
   .waitlist-form {
     display: flex;
@@ -552,6 +542,7 @@
     white-space: nowrap;
   }
   .waitlist-btn:hover { background: var(--red-br); }
+  .waitlist-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
   .waitlist-note {
     font-family: var(--font-mono);
@@ -769,7 +760,6 @@
   <p class="section-sub">Four tiers built for different investigative needs — from community fraud fighters to law enforcement agencies. Every tier includes the full PHOTOINT intelligence suite.</p>
 
   <div class="tiers-grid">
-    <!-- T1 -->
     <div class="tier-card">
       <div class="tier-label">T1</div>
       <div class="tier-name">Investigator</div>
@@ -785,7 +775,6 @@
       </ul>
     </div>
 
-    <!-- T2 -->
     <div class="tier-card">
       <div class="tier-label">T2</div>
       <div class="tier-name">Professional</div>
@@ -800,7 +789,6 @@
       </ul>
     </div>
 
-    <!-- T3 -->
     <div class="tier-card featured">
       <div class="tier-badge">Most Popular</div>
       <div class="tier-label">T3</div>
@@ -817,7 +805,6 @@
       </ul>
     </div>
 
-    <!-- T4 -->
     <div class="tier-card">
       <div class="tier-label">T4</div>
       <div class="tier-name">Law Enforcement</div>
@@ -846,29 +833,17 @@
       <div class="story-meta-label">The Founder</div>
       <div class="story-meta-name">Mike Diamond</div>
       <div class="story-meta-role">IT Engineer · Fraud Investigator · SBN Founder</div>
-
-      <div class="story-meta-stat">
-        Started as a victim of a Facebook Marketplace scam. Became the investigator.
-      </div>
-      <div class="story-meta-stat">
-        Filed reports with FTC, FBI IC3, and Meta. Documented the infrastructure. Built the tools to do it better.
-      </div>
-      <div class="story-meta-stat">
-        Auburn, WA · Scam Busters Network HQ
-      </div>
+      <div class="story-meta-stat">Started as a victim of a Facebook Marketplace scam. Became the investigator.</div>
+      <div class="story-meta-stat">Filed reports with FTC, FBI IC3, and Meta. Documented the infrastructure. Built the tools to do it better.</div>
+      <div class="story-meta-stat">Auburn, WA · Scam Busters Network HQ</div>
     </div>
 
     <div class="story-content">
       <p>These tools didn't start in a lab. They started with a scam.</p>
-
       <p><strong>In 2026, I was defrauded through a Facebook Marketplace listing.</strong> The seller was sophisticated — fake shipping companies, a convincing website, stolen payment. When I tried to report it, I ran into a wall: no tools built for people like me, no easy way to document the infrastructure, no way to connect my case to the dozens of others being run by the same operation.</p>
-
       <blockquote>"So I built the tools myself. Not because I'm a developer — but because I'm an IT engineer who got angry enough to learn."</blockquote>
-
       <p>What started as personal investigation tools became <strong>SBN Command and SBN PHOTOINT</strong> — a full investigation platform tested on real cases, against real scammers, with real results reported to federal agencies.</p>
-
       <p>The Scam Busters Network now runs <strong>silent monitoring bots</strong> across scammer-operated Facebook groups, building an intelligence database that gets smarter with every case. The face-matching system has already linked stolen identities across multiple scam operations. The evidence packaging has been submitted to the FTC, FBI IC3, and local law enforcement.</p>
-
       <p>Most OSINT tools are built by developers who've never investigated a fraud case. <strong>SBN tools are built by an investigator who built them because he needed them.</strong> That's the difference.</p>
     </div>
   </div>
@@ -893,7 +868,7 @@
       required
       autocomplete="email"
     >
-    <button type="submit" class="waitlist-btn">Join Waitlist</button>
+    <button type="submit" class="waitlist-btn" id="waitlist-btn">Join Waitlist</button>
   </form>
   <div id="waitlist-msg"></div>
   <p class="waitlist-note" style="margin-top: 16px;">No spam. No marketing. Just launch updates.</p>
@@ -905,7 +880,7 @@
   <div class="footer-links">
     <a href="https://www.youtube.com/@MikeDiamondSBN" target="_blank" rel="noopener">YouTube</a>
     <a href="https://www.facebook.com/groups/sbnhq" target="_blank" rel="noopener">Community</a>
-    <a href="mailto:SBNinvestigations@pm.me">Contact</a>
+    <a href="mailto:SBN@scambustersnetwork.com">Contact</a>
     <a href="#waitlist">Early Access</a>
   </div>
   <div class="footer-copy">
@@ -917,29 +892,48 @@
 function submitWaitlist(e) {
   e.preventDefault();
   const email = document.getElementById('waitlist-email').value.trim();
-  const msg = document.getElementById('waitlist-msg');
+  const msg   = document.getElementById('waitlist-msg');
+  const btn   = document.getElementById('waitlist-btn');
   if (!email) return;
 
-  // For now, show confirmation and log locally.
-  // When the backend server is ready, replace this with a real POST to
-  // https://api.scambustersnetwork.com/waitlist
-  msg.textContent = '✓ You\'re on the list. We\'ll be in touch at launch.';
-  document.getElementById('waitlist-email').value = '';
+  btn.textContent = 'SENDING...';
+  btn.disabled = true;
 
-  // Future backend call (uncomment when proxy server is live):
-  // fetch('https://api.scambustersnetwork.com/waitlist', {
-  //   method: 'POST',
-  //   headers: {'Content-Type': 'application/json'},
-  //   body: JSON.stringify({email})
-  // });
+  fetch('https://formspree.io/f/mbgryqkn', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({ email: email, source: 'SBN Waitlist' })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      msg.textContent = '✓ You\'re on the list. We\'ll be in touch at launch.';
+      msg.style.color = 'var(--green)';
+      document.getElementById('waitlist-email').value = '';
+    } else {
+      msg.textContent = '⚠ Something went wrong. Email us: SBN@scambustersnetwork.com';
+      msg.style.color = 'var(--amber)';
+    }
+  })
+  .catch(() => {
+    msg.textContent = '⚠ Connection error. Email us: SBN@scambustersnetwork.com';
+    msg.style.color = 'var(--amber)';
+  })
+  .finally(() => {
+    btn.textContent = 'JOIN WAITLIST';
+    btn.disabled = false;
+  });
 }
 
-// Smooth scroll for anchor links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 </script>

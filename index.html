@@ -256,6 +256,10 @@
   .tier-features li .check { color: var(--green); flex-shrink: 0; }
   .tier-features li .plus  { color: var(--amber); flex-shrink: 0; }
   .tier-features li .star  { color: var(--red-br); flex-shrink: 0; }
+  .tier-features li .planned { color: var(--muted); flex-shrink: 0; }
+  .tier-group { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin: 16px 0 8px; }
+  .tier-group.included { color: var(--green); margin-top: 0; }
+  .tier-group.planned { color: var(--amber); }
 
   /* STORY */
   .story-section { background: var(--surf); }
@@ -368,7 +372,7 @@
     <span class="cred-label">Search Platforms</span>
   </div>
   <div class="cred-item">
-    <span class="cred-num">40+</span>
+    <span class="cred-num">30</span>
     <span class="cred-label">File Signatures</span>
   </div>
   <div class="cred-item">
@@ -419,13 +423,15 @@
     <div class="module-card">
       <span class="module-tag">T3 forensic</span>
       <div class="module-name">CROSS-REFERENCE ENGINE</div>
-      <p class="module-desc">Run any reference set against any other. Catch repeat actors across cases instantly — the same scammer showing up in new submissions triggers an automatic match.</p>
+      <p class="module-desc">Run any reference set against any other. Set A vs Set B, N x M comparisons, best-first ranked output.</p>
       <ul class="module-features">
         <li>Set A vs Set B — N×M comparisons, best-first ranked output</li>
         <li>Self-reference dedup (find duplicate identities within one set)</li>
         <li>Uses the same calibrated thresholds as the flagship face engine</li>
-        <li>Add confirmed cross-matches directly to the active case</li>
       </ul>
+      <div class="packs-row">
+        <span class="pack-chip">Coming Soon</span>
+      </div>
     </div>
 
     <div class="module-card">
@@ -434,7 +440,7 @@
       <p class="module-desc">Age-progress or age-regress a photo using local GPU inference. No API keys. No cloud. Runs entirely on your machine using Stable Diffusion.</p>
       <ul class="module-features">
         <li>Target-age slider 1–100 with known-age anchor for accuracy</li>
-        <li>Local GPU inference — RTX 3060 Ti optimized, ~10s per transform</li>
+        <li>Local GPU inference. No API keys, no cloud.</li>
         <li>Age progression, regression, portrait, and restore modes</li>
         <li>Results saved to evidence folder + Add to Case on one click</li>
       </ul>
@@ -475,10 +481,9 @@
       <div class="module-name">FILE CARVER</div>
       <p class="module-desc">Recover deleted files from drives, memory cards, and disk images by scanning raw bytes — works even when the filesystem is gone.</p>
       <ul class="module-features">
-        <li>40+ file signatures: images, video, audio, documents, raw camera formats</li>
+        <li>30 file signatures across 27 file types</li>
         <li>SHA-256 + MD5 on every carved file — chain-of-custody ready</li>
         <li>CSV + JSON manifests for evidence documentation</li>
-        <li>One-click ingest of recovered images into a reference set</li>
         <li>Reads SD cards, USB drives, disk images, raw physical devices</li>
       </ul>
     </div>
@@ -486,7 +491,7 @@
     <div class="module-card">
       <span class="module-tag">Evidence output</span>
       <div class="module-name">CASE EXPORT</div>
-      <p class="module-desc">Generate court-ready case reports in four formats from a single click. Every report includes a chain-of-custody generation footer.</p>
+      <p class="module-desc">Generate case reports in four formats from a single click. Every report carries a generation footer with tool version and timestamp.</p>
       <ul class="module-features">
         <li>PDF — structured, branded, court-presentable</li>
         <li>Word (.docx) — editable, for attorney review and annotation</li>
@@ -527,13 +532,17 @@
       <div class="tier-label">T2</div>
       <div class="tier-name">Professional</div>
       <div class="tier-target">Private investigators · Corporate security · Insurance fraud</div>
+      <div class="tier-group included">Included</div>
       <ul class="tier-features">
         <li><span class="check">✓</span> Everything in T1</li>
-        <li><span class="plus">+</span> Shodan IP intelligence</li>
-        <li><span class="plus">+</span> WhoisXML domain lookups</li>
-        <li><span class="plus">+</span> AbuseIPDB reputation checks</li>
-        <li><span class="plus">+</span> License key activation</li>
-        <li><span class="plus">+</span> Cloud-backed threat intel</li>
+      </ul>
+      <div class="tier-group planned">Planned</div>
+      <ul class="tier-features">
+        <li><span class="planned">○</span> Shodan IP intelligence</li>
+        <li><span class="planned">○</span> WhoisXML domain lookups</li>
+        <li><span class="planned">○</span> AbuseIPDB reputation checks</li>
+        <li><span class="planned">○</span> License key activation</li>
+        <li><span class="planned">○</span> Cloud-backed threat intel</li>
       </ul>
     </div>
 
@@ -542,13 +551,17 @@
       <div class="tier-label">T3</div>
       <div class="tier-name">Forensic</div>
       <div class="tier-target">Fraud investigators · Financial crime · Corporate security teams</div>
+      <div class="tier-group included">Included</div>
       <ul class="tier-features">
         <li><span class="check">✓</span> Everything in T2</li>
-        <li><span class="plus">+</span> Cross-reference engine (Set A vs B)</li>
-        <li><span class="plus">+</span> Full VirusTotal analysis</li>
-        <li><span class="plus">+</span> HaveIBeenPwned breach lookups</li>
-        <li><span class="plus">+</span> Cross-case correlation engine</li>
-        <li><span class="plus">+</span> Evidence chain of custody</li>
+      </ul>
+      <div class="tier-group planned">Planned</div>
+      <ul class="tier-features">
+        <li><span class="planned">○</span> Cross-reference engine (Set A vs B)</li>
+        <li><span class="planned">○</span> Full VirusTotal analysis</li>
+        <li><span class="planned">○</span> HaveIBeenPwned breach lookups</li>
+        <li><span class="planned">○</span> Cross-case correlation engine</li>
+        <li><span class="planned">○</span> Evidence chain of custody</li>
       </ul>
     </div>
 
@@ -556,14 +569,15 @@
       <div class="tier-label">T4</div>
       <div class="tier-name">Law Enforcement</div>
       <div class="tier-target">Sheriff departments · Fraud task forces · Municipal PDs</div>
+      <div class="tier-group planned" style="margin-top: 0;">Planned</div>
       <ul class="tier-features">
-        <li><span class="check">✓</span> Everything in T3</li>
-        <li><span class="star">★</span> Court-ready evidence packaging</li>
-        <li><span class="star">★</span> LE-format report templates</li>
-        <li><span class="star">★</span> Bulk evidence processing</li>
-        <li><span class="star">★</span> Public records integration</li>
-        <li><span class="star">★</span> Cross-jurisdictional correlation</li>
-        <li><span class="star">★</span> Dedicated support SLA</li>
+        <li><span class="planned">○</span> Everything in T3</li>
+        <li><span class="planned">○</span> Court-ready evidence packaging</li>
+        <li><span class="planned">○</span> LE-format report templates</li>
+        <li><span class="planned">○</span> Bulk evidence processing</li>
+        <li><span class="planned">○</span> Public records integration</li>
+        <li><span class="planned">○</span> Cross-jurisdictional correlation</li>
+        <li><span class="planned">○</span> Dedicated support SLA</li>
       </ul>
     </div>
   </div>
@@ -588,7 +602,7 @@
       <p>These tools didn't start in a lab. They started with a scam.</p>
       <p><strong>In 2026, I was defrauded through a Facebook Marketplace listing.</strong> The seller was sophisticated — fake shipping companies, a convincing website, stolen payment. When I tried to report it, I ran into a wall: no tools built for people like me, no easy way to document the infrastructure, no way to connect my case to the dozens of others being run by the same operation.</p>
       <blockquote>"So I built the tools myself. Not because I'm a developer — but because I'm an IT engineer who got angry enough to learn."</blockquote>
-      <p>What started as personal investigation tools became <strong>SBN Command</strong> — a full eight-module investigation platform tested on real cases, against real scammers, with real results reported to federal agencies.</p>
+      <p>What started as personal investigation tools became <strong>SBN Command</strong> — a full eight-module investigation platform tested on real cases, against real scammers, with findings reported to federal agencies.</p>
       <p>The face-matching system has already linked stolen identities across multiple scam operations. The evidence packaging has been submitted to the FTC, FBI IC3, and local law enforcement. The file carving module has recovered deleted evidence from compromised devices. Every module is built for the way investigations actually work — not the way developers imagine they do.</p>
       <p>Most OSINT tools are built by developers who've never investigated a fraud case. <strong>SBN Command is built by an investigator who built it because he needed it.</strong> That's the difference.</p>
     </div>
